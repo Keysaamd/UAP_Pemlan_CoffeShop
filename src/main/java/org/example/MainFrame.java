@@ -1,5 +1,7 @@
 package org.example;
 
+import org.example.Page.Dashboard;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,6 +13,8 @@ public class MainFrame extends JFrame {
         setTitle("Coffee Shop UAP 2025");
         setSize(700, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+        mainPanel.add(new Dashboard(this), "Dashboard");
 
         add(mainPanel);
         setVisible(true);
