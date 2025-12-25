@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Comparator; // Import ini penting untuk sorting
 
 public class DataBarang extends JPanel {
     private JTable table;
@@ -31,7 +32,7 @@ public class DataBarang extends JPanel {
         topPanel.add(lblS); topPanel.add(txtSearch);
         add(topPanel, BorderLayout.NORTH);
 
-        model = new DefaultTableModel(new String[]{"ID", "Nama", "Harga"}, 0);
+        model = new DefaultTableModel(new String[]{"ID", "Nama", "Harga (Rp)"}, 0);
         table = new JTable(model);
         table.setRowHeight(25);
         add(new JScrollPane(table), BorderLayout.CENTER);
@@ -64,9 +65,7 @@ public class DataBarang extends JPanel {
         JButton bDel = createBtn("HAPUS", new Color(211, 47, 47), Color.WHITE);
         JButton bBack = createBtn("KEMBALI", new Color(100, 100, 100), Color.WHITE);
 
-        btnP.add(bAdd);
-        btnP.add(bDel);
-        btnP.add(bBack);
+        btnP.add(bAdd); btnP.add(bDel); btnP.add(bBack);
 
         gbc.gridx = 0; gbc.gridy = 0; gbc.weightx = 1.0; gbc.fill = 2; southPanel.add(form, gbc);
         gbc.gridy = 1; gbc.insets = new Insets(15, 0, 0, 0); gbc.fill = 0; southPanel.add(btnP, gbc);
@@ -93,13 +92,9 @@ public class DataBarang extends JPanel {
                 if (confirm == JOptionPane.YES_OPTION) {
                     String namaDiTabel = model.getValueAt(row, 1).toString();
                     list.removeIf(p -> p.getNama().equals(namaDiTabel));
-
                     FileHandler.simpanProduk(list);
                     refreshTable("");
-                    JOptionPane.showMessageDialog(this, "Menu berhasil dihapus!");
                 }
-            } else {
-                JOptionPane.showMessageDialog(this, "Pilih baris di tabel yang ingin dihapus!");
             }
         });
 
@@ -116,6 +111,8 @@ public class DataBarang extends JPanel {
 
     private void refreshTable(String query) {
         model.setRowCount(0);
+        list.sort(Comparator.comparingDouble(Produk::getHarga));
+
         for (Produk p : list) {
             if (p.getNama().toLowerCase().contains(query.toLowerCase())) {
                 model.addRow(new Object[]{p.getId(), p.getNama(), p.getHarga()});
