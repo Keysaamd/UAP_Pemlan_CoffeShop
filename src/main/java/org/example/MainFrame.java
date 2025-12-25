@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.Page.Dashboard;
+import org.example.Page.DataBarang;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,6 +16,7 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
 
         mainPanel.add(new Dashboard(this), "Dashboard");
+        mainPanel.add(new DataBarang(this), "DataBarang");
 
         add(mainPanel);
         setVisible(true);
