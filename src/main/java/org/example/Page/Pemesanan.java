@@ -147,7 +147,7 @@ public class Pemesanan extends JPanel {
                 FileHandler.simpanRiwayat(t.toCSV());
             }
 
-            JOptionPane.showMessageDialog(this, "Transaksi Berhasill!\nID: " + idOrder);
+            JOptionPane.showMessageDialog(this, "Transaksi Berhasil!\nID: " + idOrder);
 
             model.setRowCount(0);
             totalHarga = 0;
