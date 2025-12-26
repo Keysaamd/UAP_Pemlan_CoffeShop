@@ -1,0 +1,2 @@
+P1;Iced Caramel Machiato;25000.0
+P2;Americano;20000.0
