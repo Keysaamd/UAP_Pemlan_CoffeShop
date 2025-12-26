@@ -1,9 +1,6 @@
 package org.example;
 
-import org.example.Page.Dashboard;
-import org.example.Page.DataBarang;
-import org.example.Page.Login;
-import org.example.Page.Riwayat;
+import org.example.Page.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,6 +17,7 @@ public class MainFrame extends JFrame {
         mainPanel.add(new Login(this), "Login");
         mainPanel.add(new Dashboard(this), "Dashboard");
         mainPanel.add(new DataBarang(this), "DataBarang");
+        mainPanel.add(new Pemesanan(this), "Pemesanan");
         mainPanel.add(new Riwayat(this), "Riwayat");
 
         add(mainPanel);
