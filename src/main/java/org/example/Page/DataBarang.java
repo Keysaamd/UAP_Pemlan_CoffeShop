@@ -10,7 +10,6 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Comparator;
 
 public class DataBarang extends JPanel {
     private JTable table;
@@ -77,12 +76,20 @@ public class DataBarang extends JPanel {
 
         bAdd.addActionListener(e -> {
             try {
-                if(tNama.getText().isEmpty()) return;
+                if(tNama.getText().trim().isEmpty()) {
+                    JOptionPane.showMessageDialog(this,
+                            "Nama barang tidak boleh kosong!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+                    return;
+                }
                 double h = Double.parseDouble(tHarga.getText());
                 list.add(new Produk("P" + (list.size() + 1), tNama.getText(), h));
                 FileHandler.simpanProduk(list);
                 refreshTable(""); tNama.setText(""); tHarga.setText("");
-            } catch (Exception ex) { JOptionPane.showMessageDialog(this, "Input harga salah!"); }
+                JOptionPane.showMessageDialog(this, "Menu berhasil disimpan!");
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Input harga harus berupa angka!", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         });
 
         bDel.addActionListener(e -> {
@@ -111,12 +118,11 @@ public class DataBarang extends JPanel {
 
     private void refreshTable(String query) {
         model.setRowCount(0);
-
         list.sort((p1, p2) -> Double.compare(p1.getHarga(), p2.getHarga()));
 
         for (Produk p : list) {
             if (p.getNama().toLowerCase().contains(query.toLowerCase())) {
-                model.addRow(new Object[]{p.getId(), p.getNama(), p.getHarga()});
+                model.addRow(new Object[]{p.getId(), p.getNama(), (int) p.getHarga()});
             }
         }
     }
