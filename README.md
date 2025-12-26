@@ -1,4 +1,4 @@
-# ☕ Coffee Shop Management System - UAP Pemrograman Lanjut
+# Sistem Kasir Coffee Shop - UAP Pemrograman Lanjut
 
 Aplikasi sistem kasir digital bertema Coffee Shop yang dibangun menggunakan **Java Swing**. Program ini dirancang dengan arsitektur **Multi-Page** dan menerapkan konsep **Object-Oriented Programming (OOP)** serta manajemen data berbasis **Flat-File Database** (file `.txt`).
 
