@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.Comparator; // Import ini penting untuk sorting
+import java.util.Comparator;
 
 public class DataBarang extends JPanel {
     private JTable table;
@@ -111,7 +111,8 @@ public class DataBarang extends JPanel {
 
     private void refreshTable(String query) {
         model.setRowCount(0);
-        list.sort(Comparator.comparingDouble(Produk::getHarga));
+
+        list.sort((p1, p2) -> Double.compare(p1.getHarga(), p2.getHarga()));
 
         for (Produk p : list) {
             if (p.getNama().toLowerCase().contains(query.toLowerCase())) {

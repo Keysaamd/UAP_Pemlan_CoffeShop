@@ -40,6 +40,9 @@ public class Riwayat extends JPanel {
     public void refreshTable() {
         model.setRowCount(0);
         ArrayList<String[]> dataRiwayat = FileHandler.bacaRiwayat();
+
+        dataRiwayat.sort((a, b) -> b[0].compareTo(a[0]));
+
         for (String[] baris : dataRiwayat) {
             model.addRow(baris);
         }
