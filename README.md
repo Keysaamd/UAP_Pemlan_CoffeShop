@@ -2,7 +2,7 @@
 
 Aplikasi sistem kasir digital bertema Coffee Shop yang dibangun menggunakan **Java Swing**. Program ini dirancang dengan arsitektur **Multi-Page** dan menerapkan konsep **Object-Oriented Programming (OOP)** serta manajemen data berbasis **Flat-File Database** (file `.txt`).
 
-## 🚀 Fitur Utama
+## Fitur Utama
 
 1. **Sistem Autentikasi (Login)**: Keamanan akses masuk menggunakan kredensial Admin.
 2. **Dashboard Navigasi**: Menu utama yang menghubungkan seluruh modul aplikasi menggunakan `CardLayout`.
@@ -23,7 +23,7 @@ Aplikasi sistem kasir digital bertema Coffee Shop yang dibangun menggunakan **Ja
 
 
 
-## 📁 Struktur Proyek (Package)
+## Struktur Proyek (Package)
 
 Pemisahan kelas dilakukan berdasarkan fungsinya (Separation of Concerns):
 
@@ -32,14 +32,14 @@ Pemisahan kelas dilakukan berdasarkan fungsinya (Separation of Concerns):
 * **`org.example.Model`**: Berisi blueprint data (`Produk.java` dan `Transaksi.java`).
 * **`org.example.Data`**: Berisi `FileHandler.java` yang menangani baca/tulis ke file teks.
 
-## 💾 Persistensi Data
+## Persistensi Data
 
 Aplikasi menggunakan dua file basis data lokal:
 
 * `produk.txt`: Menyimpan daftar menu (ID, Nama, Harga).
 * `riwayat.txt`: Menyimpan log transaksi (ID Transaksi, Waktu, Nama Menu, Qty, Total).
 
-## 🛠️ Cara Menjalankan Program
+## Cara Menjalankan Program
 
 1. **Prasyarat**: Pastikan Anda telah menginstal **JDK 11** atau versi lebih baru.
 2. **Clone/Download**: Unduh kode sumber dari repositori ini.
